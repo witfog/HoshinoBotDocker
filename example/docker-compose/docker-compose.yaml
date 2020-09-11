@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  hoshino:
+    image: ghcr.io/witfog/hoshinobot
+    restart: unless-stopped
+    volumes:
+      - config:/HoshinoBot/config
+      - modules:/HoshinoBot/modules
+
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/../volumes/config
+  modules:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/../volumes/modules
