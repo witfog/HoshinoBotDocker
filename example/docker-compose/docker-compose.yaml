@@ -5,8 +5,9 @@ services:
     image: ghcr.io/witfog/hoshinobot
     restart: unless-stopped
     volumes:
-      - config:/HoshinoBot/config
-      - modules:/HoshinoBot/modules
+      - config:/HoshinoBot/hoshino/config
+      - modules:/HoshinoBot/hoshino/modules
+      - img:/HoshinoBot/img
 
 volumes:
   config:
@@ -21,3 +22,9 @@ volumes:
       type: 'none'
       o: 'bind'
       device: $PWD/../volumes/modules
+  img:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/../volumes/img
