@@ -1,12 +1,6 @@
-"""这是一份实例配置文件
-
-将其修改为你需要的配置，并将文件夹config_example重命名为config
-"""
-
 # hoshino监听的端口与ip
-PORT = 8080
-HOST = '127.0.0.1'      # 本地部署使用此条配置（QQ客户端和bot端运行在同一台计算机）
-# HOST = '0.0.0.0'      # 开放公网访问使用此条配置（不安全）
+PORT = 8080             
+HOST = '0.0.0.0'        # 运行于 Docker 隔离环境中, 直接监听 0.0.0.0 即可
 
 DEBUG = False           # 调试模式
 
@@ -21,7 +15,7 @@ COMMAND_SEP = set()     # 命令分隔符（hoshino不需要该特性，保持�
 # 当QQ客户端与bot端不在同一台计算机时，可用http协议
 RES_PROTOCOL = 'file'
 # 资源库文件夹，需可读可写，windows下注意反斜杠转义
-RES_DIR = r'./res/'
+RES_DIR = r'/HoshinoBot/img'
 # 使用http协议时需填写，原则上该url应指向RES_DIR目录
 RES_URL = 'http://127.0.0.1:5000/static/'
 
