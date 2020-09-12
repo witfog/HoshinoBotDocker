@@ -17,7 +17,7 @@ then
     for f in *.txt
     do
         echo "Installing $f ..."
-        pip install -f $f
+        pip install -r $f
     done
     cd -
 fi
