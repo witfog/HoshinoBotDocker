@@ -11,9 +11,10 @@ set -ex
 [[ -d hoshino/modules_temp ]] && mv -vn hoshino/modules_temp/* hoshino/modules && rm -rf hoshino/modules_temp
 
 # Install requirements for custom plugins.
-if [[ -d hoshino/requirements ]] then
+if [[ -d hoshino/requirements ]] 
+then
     cd hoshino/requirements
-    for f in $FILES
+    for f in *.txt
     do
         echo "Installing $f ..."
         pip install -f $f
