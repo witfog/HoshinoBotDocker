@@ -3,6 +3,12 @@ version: '3'
 services:
   sut:
     build: ..
+    command: 
+      - sh
+      - -c
+      - |
+        sed -e '$s/.*/#&/' docker_entrypoint.sh
+        docker_entrypoint.sh
     restart: "no"
     volumes:
       - config:/HoshinoBot/hoshino/config
