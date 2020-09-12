@@ -7,7 +7,8 @@ services:
       - sh
       - -c
       - |
-        sed -e '$s/.*/#&/' docker_entrypoint.sh
+        set -ex
+        sed -i -e '$s/.*/#&/' ../docker_entrypoint.sh
         docker_entrypoint.sh
     restart: "no"
     volumes:
