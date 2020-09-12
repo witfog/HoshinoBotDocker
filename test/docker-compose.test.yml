@@ -2,7 +2,7 @@ version: '3'
 
 services:
   sut:
-    build: .
+    build: ..
     restart: "no"
     volumes:
       - config:/HoshinoBot/hoshino/config
