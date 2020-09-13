@@ -13,23 +13,23 @@ services:
         cat docker_entrypoint.sh
         ./docker_entrypoint.sh
     restart: "no"
-#     volumes:
-#       - config:/HoshinoBot/hoshino/config
-#       - requirements:/HoshinoBot/hoshino/requirements
+    volumes:
+      - config:/HoshinoBot/hoshino/config
+      - requirements:/HoshinoBot/hoshino/requirements
 
-# volumes:
-#   config:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: 'bind'
-#       device: $PWD/config
-#   requirements:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: 'bind'
-#       device: $PWD/requirements
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/config
+  requirements:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/requirements
   
 
 # only for test
