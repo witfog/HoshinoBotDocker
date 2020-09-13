@@ -8,6 +8,7 @@ services:
       - config:/HoshinoBot/hoshino/config
       - modules:/HoshinoBot/hoshino/modules
       - img:/HoshinoBot/img
+      - requirements:/HoshinoBot/requirements
 
 volumes:
   config:
@@ -28,3 +29,9 @@ volumes:
       type: 'none'
       o: 'bind'
       device: $PWD/../volumes/img
+  requirements:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/../volumes/requirements

@@ -10,4 +10,16 @@ set -ex
 # Copy modules from modules_temp to modules in first launch. Skip if modules is already mount by user.
 [[ -d hoshino/modules_temp ]] && mv -vn hoshino/modules_temp/* hoshino/modules && rm -rf hoshino/modules_temp
 
+# Install requirements for custom plugins.
+if [[ -d hoshino/requirements ]] 
+then
+    cd hoshino/requirements
+    for f in *.txt
+    do
+        echo "Installing $f ..."
+        pip install -r $f
+    done
+    cd -
+fi
+
 python run.py

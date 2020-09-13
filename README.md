@@ -31,6 +31,8 @@ This image auto publish into [Github Container Registry](ghcr.io) by Github Acti
   对应 HoshinoBot 的 modules 目录。此目录保存所有插件, 你可以将自己的插件放到此目录下, 并且在 config 目录放置配置文件并且修改 \_\_bot\_\_.py 以启用插件, 然后重启容器即可。
 - res : <你的配置文件中 RES_DIR 的路径>  
   资源文件目录, 此仓库不提供下载, 请自行寻找下载链接。  
+- requirements : /HoshinoBot/hoshino/requirements  
+  此目录用于放置所有自定义插件的 requirements.txt 文件, 镜像每次启动之前会对该目录下的所有 .txt 文件使用 ```pip install -r``` 安装相关依赖。
 
 tips: 
 1. 如果你的 config 和 modules 目录为空的话, 镜像启动时会将 HoshinoBot 原有的文件复制进去, 如果目录不为空, 复制过程也会进行但是会跳过已有文件不进行覆盖。  
@@ -38,4 +40,31 @@ tips:
 
 # 使用方法
 
-TODO: example 目录下将提供可参考的配置文件.
+## 准备工作
+
+请自行安装 docker-ce, 并按照 [获取镜像](#获取镜像) 的说明登录 ghcr.io 已确保能正确拉取镜像。  
+如果使用 docker-compose 需要额外安装 docker-compose 。
+
+## 使用 docker 安装
+
+[docker-run.sh](./example/docker/docker-run.sh)
+```sh
+git clone https://github.com/witfog/HoshinoBotDocker.git # 不想安装 git 可以自己下载 zip 文件并解压
+
+cd HoshinoBotDocker/example/docker
+
+./docker-run.sh
+```
+
+## 使用 docker-compose 安装(建议, 可搭配其他容器一起运行)
+
+[docker-compose.yml](./example/docker-compose/docker-compose.yaml)
+```sh
+git clone https://github.com/witfog/HoshinoBotDocker.git # 不想安装 git 可以自己下载 zip 文件并解压
+
+cd HoshinoBotDocker/example/docker-compose
+
+docker-compose up -d
+
+# 停止容器请在相同目录下运行 docker-compose down
+```

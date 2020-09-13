@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  sut:
+    build: ..
+    entrypoint: 
+      - sh
+      - -c
+      - |
+        set -ex
+        pwd && ls
+        sed -i 's/^python/#&/' docker_entrypoint.sh
+        cat docker_entrypoint.sh
+        ./docker_entrypoint.sh
+    restart: "no"
+    volumes:
+      - config:/HoshinoBot/hoshino/config
+      - requirements:/HoshinoBot/hoshino/requirements
+
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/config
+  requirements:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: $PWD/requirements
+  
+
+# only for test
